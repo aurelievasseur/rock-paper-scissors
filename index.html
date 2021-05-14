@@ -1,0 +1,78 @@
+<script> 
+    let result;
+
+    function computerPlay(){
+        let computerchoice = (Math.floor(Math.random()*3));
+        let choices = ['Rock', 'Paper', 'Scissors'];
+        return choices[computerchoice];
+    }
+
+    function playRound(playerSelection, computerSelection){
+        switch(playerSelection.toUpperCase()) {
+            case 'ROCK':
+                if (computerSelection === 'Rock') {
+                    console.log(`It's a tie, try again !`);
+                    return result = 'tie';
+                }
+                else if (computerSelection === 'Paper') {
+                    console.log(`You Lose! Paper beats Rock`);
+                    return result = 'playerLose';
+                } 
+                else { 
+                    console.log(`You Win! Rock beats Scissors`);
+                    return result = 'playerWin'; 
+                }
+                break;
+            case 'PAPER':
+                if (computerSelection === 'Paper') {
+                    console.log(`It's a tie, try again !`);
+                    return result = 'tie';
+                }  
+                else if (computerSelection === 'Rock') {
+                    console.log(`You Win! Paper beats Rock`);
+                    return result = 'playerWin'
+                } 
+                else {
+                    console.log(`You Lose! Scissors beats Paper`);
+                    return result = 'playerLose';
+                }
+                break;
+
+            case 'SCISSORS':
+                if (computerSelection === 'Scissors') {
+                    console.log(`It's a tie, try again !`);
+                    return result = 'tie';
+                }
+                else if (computerSelection === 'Paper') {
+                    console.log(`You Win! Scissors beats Paper`);
+                    return result = 'playerWin'
+                } 
+                else {
+                    console.log(`You Lose! Rock beats Scissors`);
+                    return result = 'playerLose'
+                }
+                break;
+            }
+        }
+    
+    function game() {
+        let playerScore =0 ;
+        let computerScore =0;
+        for (i = 0; i < 5; i++) {
+            playRound(prompt(), computerPlay());
+            if (result === 'playerWin') {
+                 playerScore += 1;
+            } else if (result ==='playerLose') {
+                 computerScore += 1;
+            } 
+            console.log('Round '+i+' : The player has '+playerScore+' and the computer has '+computerScore);
+        }
+        if (playerScore>computerScore) {
+            console.log('You are the winner !');
+        } else if (playerScore === computerScore) {
+            console.log(`It's a tie this time, no clear winner !`);
+        } else console.log('The Computer Won !!!!');
+    }
+
+    game();
+</script>
