@@ -9,7 +9,7 @@ const ui_score = document.querySelector(".insert-result");
 // computerPlay return the computer choice as a string
 function computerPlay() {
   let computerchoice = Math.floor(Math.random() * 3);
-  let choices = ["Rock", "Paper", "Scissors"];
+  let choices = ["rock", "paper", "scissors"];
   const showChoice = document.createElement("p");
   showChoice.textContent = choices[computerchoice];
   computer.appendChild(showChoice);
@@ -23,14 +23,14 @@ function playRound(e, computerSelection) {
   } else {
     switch (e) {
       case "rock":
-        if (computerSelection === "Paper") {
+        if (computerSelection === "paper") {
           result = "playerLose";
         } else result = "playerWin";
 
         break;
 
       case "paper":
-        if (computerSelection === "Rock") {
+        if (computerSelection === "rock") {
           result = "playerWin";
         } else {
           result = "playerLose";
@@ -38,7 +38,7 @@ function playRound(e, computerSelection) {
         break;
 
       case "scissors":
-        if (computerSelection === "Paper") {
+        if (computerSelection === "paper") {
           result = "playerWin";
         } else result = "playerLose";
 
