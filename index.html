@@ -1,78 +1,35 @@
-<script> 
-    let result;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <div class="rules">
+        <h2>Rules</h2>
+        <p>This is a simple Rock, Paper Scissors</p>
+    </div>
+    <!-- The user can choose what he wants to play -->
+    <div class="game">
+        <button class="btn-game" id="rock"> Rock </button>
+        <button class="btn-game" id="paper">Paper</button>
+        <button class="btn-game" id="scissors">Scissors</button>
+    </div>
+    <h2>Computer has chosen : </h2>
+    <!-- The computer choice is inserted here with Javascript  -->
+    <div class="computer"></div>
 
-    function computerPlay(){
-        let computerchoice = (Math.floor(Math.random()*3));
-        let choices = ['Rock', 'Paper', 'Scissors'];
-        return choices[computerchoice];
-    }
-
-    function playRound(playerSelection, computerSelection){
-        switch(playerSelection.toUpperCase()) {
-            case 'ROCK':
-                if (computerSelection === 'Rock') {
-                    console.log(`It's a tie, try again !`);
-                    return result = 'tie';
-                }
-                else if (computerSelection === 'Paper') {
-                    console.log(`You Lose! Paper beats Rock`);
-                    return result = 'playerLose';
-                } 
-                else { 
-                    console.log(`You Win! Rock beats Scissors`);
-                    return result = 'playerWin'; 
-                }
-                break;
-            case 'PAPER':
-                if (computerSelection === 'Paper') {
-                    console.log(`It's a tie, try again !`);
-                    return result = 'tie';
-                }  
-                else if (computerSelection === 'Rock') {
-                    console.log(`You Win! Paper beats Rock`);
-                    return result = 'playerWin'
-                } 
-                else {
-                    console.log(`You Lose! Scissors beats Paper`);
-                    return result = 'playerLose';
-                }
-                break;
-
-            case 'SCISSORS':
-                if (computerSelection === 'Scissors') {
-                    console.log(`It's a tie, try again !`);
-                    return result = 'tie';
-                }
-                else if (computerSelection === 'Paper') {
-                    console.log(`You Win! Scissors beats Paper`);
-                    return result = 'playerWin'
-                } 
-                else {
-                    console.log(`You Lose! Rock beats Scissors`);
-                    return result = 'playerLose'
-                }
-                break;
-            }
-        }
-    
-    function game() {
-        let playerScore =0 ;
-        let computerScore =0;
-        for (i = 0; i < 5; i++) {
-            playRound(prompt(), computerPlay());
-            if (result === 'playerWin') {
-                 playerScore += 1;
-            } else if (result ==='playerLose') {
-                 computerScore += 1;
-            } 
-            console.log('Round '+i+' : The player has '+playerScore+' and the computer has '+computerScore);
-        }
-        if (playerScore>computerScore) {
-            console.log('You are the winner !');
-        } else if (playerScore === computerScore) {
-            console.log(`It's a tie this time, no clear winner !`);
-        } else console.log('The Computer Won !!!!');
-    }
-
-    game();
-</script>
+    <!-- The score is outputed -->
+    <div class="result">
+        <h2>Results</h2>
+        <p class="insert-result"></p>
+    </div>
+    <div>
+        <button class="reset"> Restart ! </button>
+    </div>
+</body>
+<script src="/main.js"> </script>
+</html>
