@@ -5,14 +5,13 @@ let playerScore = 0;
 let computerScore = 0;
 const computer = document.querySelector(".computer");
 const ui_score = document.querySelector(".insert-result");
+const total_score = document.querySelector(".total_score")
 
 // computerPlay return the computer choice as a string
 function computerPlay() {
   let computerchoice = Math.floor(Math.random() * 3);
   let choices = ["rock", "paper", "scissors"];
-  const showChoice = document.createElement("p");
-  showChoice.textContent = choices[computerchoice];
-  computer.appendChild(showChoice);
+  computer.textContent = choices[computerchoice];
   return choices[computerchoice];
 }
 
@@ -53,35 +52,29 @@ function keepTrack() {
   } else if (result === "playerLose") {
     computerScore += 1;
   }
-  const showResult = document.createElement("p");
-  showResult.textContent =
+  total_score.textContent =
     "Round " +
     roundCount +
     " : The player has " +
     playerScore +
     " and the computer has " +
     computerScore;
-  ui_score.appendChild(showResult);
   roundCount += 1;
 }
 
 // Display the current leading player
 function winner() {
-  const showOutcome = document.createElement("h3");
   if (playerScore > computerScore) {
-    showOutcome.textContent = "You are the current winner !";
+    ui_score.textContent = "You are the current winner !";
   } else if (playerScore === computerScore) {
-    showOutcome.textContent = `It's a tie right now, no clear winner !`;
-  } else showOutcome.textContent = "The Computer is killing it !!!!";
+    ui_score.textContent = `It's a tie right now, no clear winner !`;
+  } else ui_score.textContent = "The Computer is killing it !!!!";
 
-  ui_score.appendChild(showOutcome);
 }
 
 const playerChoice = document.querySelectorAll(".btn-game");
 playerChoice.forEach((element) => {
   element.addEventListener("click", function (e) {
-    computer.innerHTML = "";
-    ui_score.innerHTML = "";
     playRound(this.id, computerPlay());
     keepTrack();
     winner();
