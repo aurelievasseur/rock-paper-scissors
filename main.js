@@ -3,14 +3,18 @@ let result;
 let roundCount = 0;
 let playerScore = 0;
 let computerScore = 0;
-const computer = document.querySelector(".computer");
+
+const computer = document.querySelector("#computer-btn");
 const ui_score = document.querySelector(".insert-result");
 const total_score = document.querySelector(".total_score")
+const human_score = document.querySelector('#human-score')
+const computer_score = document.querySelector('#computer-score')
+const currentRound = document.querySelector('#round')
 
 // computerPlay return the computer choice as a string
 function computerPlay() {
   let computerchoice = Math.floor(Math.random() * 3);
-  let choices = ["rock", "paper", "scissors"];
+  let choices = ["Rock", "Paper", "Scissors"];
   computer.textContent = choices[computerchoice];
   return choices[computerchoice];
 }
@@ -21,23 +25,23 @@ function playRound(e, computerSelection) {
     result = "tie";
   } else {
     switch (e) {
-      case "rock":
-        if (computerSelection === "paper") {
+      case "Rock":
+        if (computerSelection === "Paper") {
           result = "playerLose";
         } else result = "playerWin";
 
         break;
 
-      case "paper":
-        if (computerSelection === "rock") {
+      case "Paper":
+        if (computerSelection === "Rock") {
           result = "playerWin";
         } else {
           result = "playerLose";
         }
         break;
 
-      case "scissors":
-        if (computerSelection === "paper") {
+      case "Scissors":
+        if (computerSelection === "Paper") {
           result = "playerWin";
         } else result = "playerLose";
 
@@ -52,13 +56,9 @@ function keepTrack() {
   } else if (result === "playerLose") {
     computerScore += 1;
   }
-  total_score.textContent =
-    "Round " +
-    roundCount +
-    " : The player has " +
-    playerScore +
-    " and the computer has " +
-    computerScore;
+  human_score.textContent = playerScore;
+  currentRound.textContent = roundCount;
+  computer_score.textContent = computerScore;
   roundCount += 1;
 }
 
@@ -86,8 +86,9 @@ function reset() {
   computerScore = 0;
   roundCount = 0;
   result = "";
-  computer.innerHTML = "";
-  ui_score.innerHTML = "";
+  computer_score.innerHTML = "";
+  human_score.innerHTML = "";
+  currentRound.innerHTML = "";
 }
 const resetGame = document.querySelector(".reset");
 resetGame.addEventListener("click", reset);
